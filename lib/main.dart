@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../presentation/providers/app_provider.dart';
-import '../presentation/screens/upload_screen.dart';
-import '../presentation/screens/analytics_screen.dart';
-import '../presentation/screens/search_screen.dart';
-import '../presentation/theme/app_theme.dart';
+import 'presentation/providers/app_provider.dart';
+import 'presentation/screens/upload_screen.dart';
+import 'presentation/screens/analytics_screen.dart';
+import 'presentation/screens/search_screen.dart';
+import 'presentation/theme/app_theme.dart';
 
 /// App entry point.
 void main() {

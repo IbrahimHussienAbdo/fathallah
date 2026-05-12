@@ -68,7 +68,7 @@ class AppDatabase {
   /// Optimal chunk size for sqflite batch inserts on Android ART runtime.
   /// 2000 rows/transaction gives best throughput for 1M+ record imports
   /// on devices with 4GB+ RAM. Drop to 1000 for 2GB devices.
-  static const int _kChunkSize = 2000;
+  static const int _kChunkSize = 3000;
 
   /// Batch-inserts purchase rows in chunked transactions to avoid OOM
   /// with large files (1M+ records). Each chunk is a separate transaction.
