@@ -195,9 +195,9 @@ class AppProvider extends ChangeNotifier {
         throw Exception('No valid data rows found in file.');
       }
 
+      _succeed('Analytics Completed.  ✅  $totalInserted sale records imported.');
       analyticsLoaded = false;
       await _refreshCounts();
-      _succeed('Analytics Completed.  ✅  $totalInserted sale records imported.');
     } catch (e) {
       _fail('$e');
     }
