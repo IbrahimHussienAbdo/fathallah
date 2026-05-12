@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:provider/provider.dart';
@@ -47,14 +48,43 @@ class _UploadScreenState extends State<UploadScreen> {
     );
   }
 
-  /// Opens the platform file picker for the given [type] ('purchases'|'sales'),
-  /// then passes the file PATH (not bytes) to the provider so large files
-  /// are never fully loaded into RAM at once.
+  /// Opens the platform file picker for the given [type] ('purchases'|'sales').
   ///
-  /// withData: false — do not buffer the whole file in memory.
-  /// withReadStream: false — we use dart:io streaming directly via the path.
+  /// Web:    withData: true  — bytes only, no filesystem path available.
+  ///         Calls uploadSalesWeb / uploadPurchasesWeb (web-only methods).
+  ///
+  /// Mobile: withData: false — uses path for streaming large files.
+  ///         Mobile code path is UNCHANGED from original.
   Future<void> _pickFile(BuildContext ctx, String type) async {
     final ext = type == 'sales' ? ['csv', 'xlsx', 'xls'] : ['xlsx', 'xls', 'csv'];
+
+    // ── Web branch (new) ───────────────────────────────────────────────────
+    if (kIsWeb) {
+      final result = await FilePicker.platform.pickFiles(
+        type: FileType.custom,
+        allowedExtensions: ext,
+        withData: true,  // web needs bytes — no dart:io filesystem access
+      );
+      if (result == null || !ctx.mounted) return;
+      final file = result.files.first;
+      if (file.bytes == null) {
+        if (ctx.mounted) {
+          ScaffoldMessenger.of(ctx).showSnackBar(
+            const SnackBar(content: Text('Could not read file bytes.')),
+          );
+        }
+        return;
+      }
+      final provider = ctx.read<AppProvider>();
+      if (type == 'sales') {
+        await provider.uploadSalesWeb(file.bytes!, file.name);
+      } else {
+        await provider.uploadPurchasesWeb(file.bytes!, file.name);
+      }
+      return;
+    }
+
+    // ── Mobile branch (original — untouched) ──────────────────────────────
     final result = await FilePicker.platform.pickFiles(
       type: FileType.custom,
       allowedExtensions: ext,

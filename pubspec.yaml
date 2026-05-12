@@ -12,7 +12,8 @@ dependencies:
     sdk: flutter
 
   # ── Database ──────────────────────────────────────────
-  sqflite: ^2.3.3+1             # SQLite for mobile/desktop
+  sqflite: ^2.3.3+1                 # SQLite for mobile/desktop
+  sqflite_common_ffi_web: ^0.4.5+1  # SQLite for web via IndexedDB
   path: ^1.9.0
   path_provider: ^2.1.4
 

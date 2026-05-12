@@ -249,6 +249,20 @@ class AppProvider extends ChangeNotifier {
     }
   }
 
+  // ── Upload (web-only — bytes from file picker) ───────
+  // Web has no filesystem path — file_picker returns bytes directly.
+  // These methods reuse the existing mobile bytes-based methods as-is.
+
+  /// Web-only: uploads a sales CSV file from bytes picked via file_picker.
+  /// Delegates to [uploadSales] which already handles bytes on mobile too.
+  Future<void> uploadSalesWeb(List<int> bytes, String filename) =>
+      uploadSales(bytes, filename);
+
+  /// Web-only: uploads a purchases XLSX file from bytes picked via file_picker.
+  /// Delegates to [uploadPurchases] which already handles bytes on mobile too.
+  Future<void> uploadPurchasesWeb(List<int> bytes, String filename) =>
+      uploadPurchases(bytes, filename);
+
   // ── Clear ─────────────────────────────────────────────
 
   /// Clears all purchase and sale data from the database.

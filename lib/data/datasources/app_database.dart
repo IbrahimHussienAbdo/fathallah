@@ -1,4 +1,6 @@
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:sqflite/sqflite.dart';
+import 'package:sqflite_common_ffi_web/sqflite_ffi_web.dart';
 import 'package:path/path.dart';
 
 /// Singleton that owns the SQLite connection and all raw SQL operations.
@@ -19,8 +21,23 @@ class AppDatabase {
 
   /// Opens (or creates) the SQLite database file.
   Future<Database> _openDatabase() async {
+    // Web: use IndexedDB-backed SQLite via sqflite_common_ffi_web.
+    // Requires sqflite_sw.js + sqlite3.wasm in web/ folder.
+    // Run: dart run sqflite_common_ffi_web:setup
+    if (kIsWeb) {
+      return databaseFactoryFfiWeb.openDatabase(
+        'analytics_v1.db',
+        options: OpenDatabaseOptions(version: 2, onCreate: _createTables),
+      );
+    }
+    // Mobile: native sqflite — unchanged.
     final path = join(await getDatabasesPath(), 'analytics_v1.db');
-    return openDatabase(path, version: 2, onCreate: _createTables);
+    final db = await openDatabase(path, version: 2, onCreate: _createTables);
+    await db.rawQuery('PRAGMA journal_mode = WAL');
+    await db.rawQuery('PRAGMA synchronous = NORMAL');
+    await db.rawQuery('PRAGMA cache_size = -65536');
+    await db.rawQuery('PRAGMA temp_store = MEMORY');
+    return db;
   }
 
   /// Creates tables and indices on first run.
