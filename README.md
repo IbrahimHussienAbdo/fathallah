@@ -4,6 +4,12 @@ A cross-platform (mobile & web) Flutter application designed for Fathallah Gomla
 
 ## 🚀  Previews
 
+### 📱 Mobile Application
+
+| Home Screen | Top Sales| Dead Stock | Profit | Search | 
+|---|---|---|---|
+| ![](/assets/mobile_screens/upload_screen.jpg) | ![](/assets/mobile_screens/top_sales_screen.jpg) | ![](/assets/mobile_screens/dead_stock_screen.jpg) | ![](/assets/mobile_screens/profit_screen.jpg) | | ![](/assets/mobile_screens/search_screen.jpg)
+
 ### Web Application Preview
 
 | Upload Screen                                          | Search & View                                       | Analytics Dashboard                                           | Dead Stock Report                                        |
