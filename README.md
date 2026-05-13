@@ -2,19 +2,19 @@
 
 A cross-platform (mobile & web) Flutter application designed for Fathallah Gomla Market to perform internal data processing and business analytics. The app provides insights into sales, inventory, and profitability by parsing and analyzing uploaded purchase and sales data.
 
-## 🚀  Previews
+## 🚀 Previews
 
 ### 📱 Mobile Application
 
 | Home Screen | Top Sales| Dead Stock | Profit | Search | 
-|---|---|---|---|
-| ![](/assets/mobile_screens/upload_screen.jpg) | ![](/assets/mobile_screens/top_sales_screen.jpg) | ![](/assets/mobile_screens/dead_stock_screen.jpg) | ![](/assets/mobile_screens/profit_screen.jpg) | | ![](/assets/mobile_screens/search_screen.jpg)
+|---|---|---|---|---|
+| <img src="/assets/mobile_screens/upload_screen.jpg" width="200"> | <img src="/assets/mobile_screens/top_sales_screen.jpg" width="200"> | <img src="/assets/mobile_screens/dead_stock_screen.jpg" width="200"> | <img src="/assets/mobile_screens/profit_screen.jpg" width="200"> | <img src="/assets/mobile_screens/search_screen.jpg" width="200"> |
 
 ### Web Application Preview
 
-| Upload Screen                                          | Search & View                                       | Analytics Dashboard                                           | Dead Stock Report                                        |
-| ------------------------------------------------------ | --------------------------------------------------- | ------------------------------------------------------------- | -------------------------------------------------------- |
-| ![](/assets/web_screens/upload_screen.png) | ![](/assets/web_screens/search.png) | ![](/assets/web_screens/analytics_screen.png) | ![](/assets/web_screens/dead_stock.png) |
+| Upload Screen | Search & View | Analytics Dashboard | Dead Stock Report |
+|---|---|---|---|
+| <img src="/assets/web_screens/upload_screen.png" width="200"> | <img src="/assets/web_screens/search.png" width="200"> | <img src="/assets/web_screens/analytics_screen.png" width="200"> | <img src="/assets/web_screens/dead_stock.png" width="200"> |
 
 ## ✨ Features
 
