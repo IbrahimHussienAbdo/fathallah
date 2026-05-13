@@ -2,10 +2,7 @@
 
 A cross-platform (mobile & web) Flutter application designed for Fathallah Gomla Market to perform internal data processing and business analytics. The app provides insights into sales, inventory, and profitability by parsing and analyzing uploaded purchase and sales data.
 
-## 🚀 Live Demo & Previews
-
--   **Web App:** [Link to your deployed web app]
--   **Mobile Demo:** A video showcasing the mobile app's functionality can be found in the `/assets/mobile_demo` directory.
+## 🚀  Previews
 
 ### Web Application Preview
 
