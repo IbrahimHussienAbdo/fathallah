@@ -16,9 +16,7 @@ import 'presentation/theme/app_theme.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  if (kIsWeb) {
-    databaseFactory = databaseFactoryFfiWeb;
-  }
+
 
   runApp(
     /// Provide [AppProvider] at the root so every screen can access state.
