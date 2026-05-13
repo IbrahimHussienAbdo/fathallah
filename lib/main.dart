@@ -2,8 +2,7 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:sqflite_common_ffi_web/sqflite_ffi_web.dart'
-    if (dart.library.io) 'package:sqflite/sqflite.dart';
+import 'package:sqflite_common_ffi_web/sqflite_ffi_web.dart';
 import 'presentation/providers/app_provider.dart';
 import 'presentation/screens/upload_screen.dart';
 import 'presentation/screens/analytics_screen.dart';
@@ -16,6 +15,11 @@ import 'presentation/theme/app_theme.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+
+if (kIsWeb) {
+  // Change default factory on the web
+  databaseFactory = databaseFactoryFfiWeb;
+}
 
 
   runApp(
